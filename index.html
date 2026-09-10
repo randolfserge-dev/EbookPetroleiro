@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imersão na Sonda — Volume I: Sistema de Rotação | Sergio Ramón Gay Lozada</title>
+  <meta name="description" content="Manual técnico e prático de engenharia sobre o Sistema de Rotação em operações de Perfuração e Workover de Petróleo e Gás. Por Sergio Ramón Gay Lozada.">
+  <meta name="keywords" content="Petróleo e Gás, Perfuração, Workover, Sistema de Rotação, Mesa Rotativa, Kelly, Top Drive, Swivel, BHA, Brocas, IADC Dull Grading, Sergio Ramón Gay Lozada, NPT">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Imersão na Sonda — Volume I: Sistema de Rotação">
+  <meta property="og:description" content="O manual técnico de campo que transforma potência em torque e torque em progresso operacional seguro. 20+ anos de experiência na linha de frente de P&G.">
+  <meta property="og:type" content="book">
+  <meta property="og:image" content="assets/book-desk-mockup.jpg">
+
+  <!-- Google Fonts: Barlow Condensed, Inter, JetBrains Mono, Rajdhani -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Barra de Progresso de Leitura Superior -->
+  <div class="reading-progress-track" aria-hidden="true">
+    <div class="reading-progress-fill" id="readingProgress"></div>
+  </div>
+
+  <!-- Header Fixo de Navegação -->
+  <header class="site-header" id="mainHeader">
+    <div class="header-container">
+      <a href="#" class="brand-identity" aria-label="Imersão na Sonda - Início">
+        <div class="brand-icon-wrapper">
+          <!-- Ícone Vetorial de Torre / Derrick -->
+          <svg class="derrick-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 2L8 28H24L16 2Z" stroke="#FFB800" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M12 15H20" stroke="#FFB800" stroke-width="1.5"/>
+            <path d="M10 21H22" stroke="#FFB800" stroke-width="1.5"/>
+            <path d="M14 9H18" stroke="#FFB800" stroke-width="1.5"/>
+            <path d="M16 2V28" stroke="#FFB800" stroke-width="1.5" stroke-dasharray="2 2"/>
+            <circle cx="16" cy="2" r="1.5" fill="#FFB800"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">IMERSÃO NA SONDA</span>
+          <span class="brand-tag">VOL. I // SISTEMA DE ROTAÇÃO</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Navegação Principal">
+        <ul class="nav-list">
+          <li><a href="#sobre-autor" class="nav-link">O Autor</a></li>
+          <li><a href="#capitulos" class="nav-link">Conteúdo Técnico</a></li>
+          <li><a href="#simulador" class="nav-link nav-link-highlight">Simulador de Sonda</a></li>
+          <li><a href="#beneficios" class="nav-link">Diferenciais</a></li>
+          <li><a href="#oferta" class="nav-link">Adquirir</a></li>
+        </ul>
+        <div class="mobile-nav-cta">
+          <a href="#oferta" class="btn btn-primary btn-mobile-menu">
+            <span>⚡ GARANTIR EXEMPLAR (ACESSO IMEDIATO)</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <a href="#oferta" class="btn btn-header">
+          <span class="btn-pulse-dot" aria-hidden="true"></span>
+          <span>GARANTIR EXEMPLAR</span>
+        </a>
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Abrir Menu de Navegação" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="mainContent">
+
+    <!-- SEÇÃO HERO -->
+    <section class="hero-section" id="hero">
+      <div class="hero-background-grid" aria-hidden="true"></div>
+      <div class="hero-radial-glow" aria-hidden="true"></div>
+
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-meta-kicker reveal-item">
+            <span class="tech-badge"><span class="badge-dot"></span> MANUAL DE ENGENHARIA & CAMPO</span>
+            <span class="tech-id">DOC ID: INS-VOL1-ROT</span>
+            <span class="tech-std">NORMAS: IADC / API SPEC 7</span>
+          </div>
+
+          <h1 class="hero-title reveal-item">
+            IMERSÃO NA SONDA
+            <span class="hero-subtitle-block">VOLUME I — SISTEMA DE ROTAÇÃO</span>
+          </h1>
+
+          <p class="hero-lead reveal-item">
+            A realidade operacional, os riscos de poço e as decisões críticas sob pressão que <strong>ninguém te fala</strong> no setor de Petróleo e Gás.
+          </p>
+
+          <p class="hero-subtext reveal-item">
+            Um tratado prático e direto ao ponto sobre transmissão de torque, integridade de coluna, cinemática de superfície e mitigação de NPT — escrito por quem acumula mais de 20 anos de chão de sonda internacional.
+          </p>
+
+          <div class="hero-author-stamp reveal-item">
+            <div class="stamp-icon">✓</div>
+            <div class="stamp-info">
+              <strong>Sergio Ramón Gay Lozada</strong>
+              <span>Especialista Sênior Internacional em Perfuração & Workover</span>
+            </div>
+          </div>
+
+          <div class="hero-cta-group reveal-item">
+            <a href="#oferta" class="btn btn-primary btn-lg">
+              <span class="btn-icon">⚡</span>
+              <span>ADQUIRIR AGORA (ACESSO IMEDIATO)</span>
+            </a>
+            <a href="#capitulos" class="btn btn-secondary btn-lg">
+              <span class="btn-icon">📋</span>
+              <span>EXPLORAR OS 10 CAPÍTULOS</span>
+            </a>
+          </div>
+
+          <div class="hero-fast-track reveal-item">
+            <a href="#simulador" class="fast-track-link">
+              <span class="fast-track-pulse"></span>
+              <span>TESTAR FERRAMENTA: <strong>Laboratório de Eficiência da Sonda</strong> ↓</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Capa 3D Interativa com Efeito Tilt ao Movimento do Mouse -->
+        <div class="hero-visual reveal-item">
+          <div class="book-3d-wrapper" id="bookTiltWrapper">
+            <div class="book-ambient-glow" id="bookGlow"></div>
+            
+            <div class="book-3d-scene">
+              <div class="book-object" id="bookObject">
+                <!-- Capa Frontal Oficial em Alta Definição -->
+                <div class="book-face book-front">
+                  <img src="assets/cover.png" alt="Capa Oficial do Livro Imersão na Sonda — Volume I: Sistema de Rotação por Sergio Ramón Gay Lozada" class="book-cover-image" onerror="this.src='assets/vover.png'">
+                  <!-- Brilho especular dinâmico que reage ao mouse -->
+                  <div class="book-glare" id="bookGlare"></div>
+                </div>
+
+                <!-- Lombada 3D do Livro -->
+                <div class="book-face book-spine">
+                  <div class="spine-text">
+                    <span>SERGIO RAMÓN GAY LOZADA</span>
+                    <span class="spine-title">IMERSÃO NA SONDA — VOL. I: SISTEMA DE ROTAÇÃO</span>
+                  </div>
+                </div>
+
+                <!-- Páginas / Corte Lateral do Livro -->
+                <div class="book-face book-pages"></div>
+                <!-- Verso do Livro -->
+                <div class="book-face book-back"></div>
+              </div>
+            </div>
+
+            <!-- Badges Técnicos Flutuantes ao Redor da Obra -->
+            <div class="floating-telemetry tag-top-right">
+              <span class="tag-status">ONLINE</span>
+              <span class="tag-label">TOP DRIVE & KELLY</span>
+              <span class="tag-val">TORQUE TRACK // 45.000 FT-LBS</span>
+            </div>
+            <div class="floating-telemetry tag-bottom-left">
+              <span class="tag-status">CRITICAL</span>
+              <span class="tag-label">MITIGAÇÃO DE NPT</span>
+              <span class="tag-val">PREVENÇÃO DE PRISÃO DE COLUNA</span>
+            </div>
+            <div class="floating-telemetry tag-bottom-right">
+              <span class="tag-status">API COMPLIANT</span>
+              <span class="tag-label">IADC DULL GRADING</span>
+              <span class="tag-val">AVALIAÇÃO DE BROCAS PDC</span>
+            </div>
+
+            <p class="book-interact-tip">
+              <span class="tip-icon">⤹</span> Mova o cursor sobre a obra para inspecionar em 3D
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO MÉTRICAS DE AUTORIDADE (KPIs INDUSTRIAIS) -->
+    <section class="kpi-section" aria-label="Métricas de Engenharia e Autoridade">
+      <div class="section-container">
+        <div class="kpi-grid">
+          <div class="kpi-card reveal-item">
+            <div class="kpi-header">
+              <span class="kpi-tag">EXPERIÊNCIA DE CAMPO</span>
+              <span class="kpi-indicator"></span>
+            </div>
+            <div class="kpi-value-row">
+              <span class="kpi-number" data-count="20">20</span><span class="kpi-unit">+</span>
+            </div>
+            <div class="kpi-title">ANOS DE CAMPO INTERNACIONAL</div>
+            <p class="kpi-desc">Vivência prática ininterrupta em poços de alta pressão, alta temperatura e intervenções críticas de workover.</p>
+          </div>
+
+          <div class="kpi-card reveal-item">
+            <div class="kpi-header">
+              <span class="kpi-tag">GRADE TÉCNICA APROFUNDADA</span>
+              <span class="kpi-indicator"></span>
+            </div>
+            <div class="kpi-value-row">
+              <span class="kpi-number" data-count="10">10</span><span class="kpi-unit">MÓDULOS</span>
+            </div>
+            <div class="kpi-title">ARQUITETURA TÉCNICA COMPLETA</div>
+            <p class="kpi-desc">Da cinemática da mesa rotativa ao BHA direcional, conexões críticas, dinâmicas de torque e liderança de sonda.</p>
+          </div>
+
+          <div class="kpi-card reveal-item">
+            <div class="kpi-header">
+              <span class="kpi-tag">FOCO OPERACIONAL</span>
+              <span class="kpi-indicator"></span>
+            </div>
+            <div class="kpi-value-row">
+              <span class="kpi-number" data-count="100">100</span><span class="kpi-unit">%</span>
+            </div>
+            <div class="kpi-title">LINGUAGEM PRÁTICA DE CAMPO</div>
+            <p class="kpi-desc">Zero abstrações teóricas desconectadas da realidade. Procedimentos reais, checklists e mitigação de paradas não programadas.</p>
+          </div>
+
+          <div class="kpi-card kpi-card-highlight reveal-item">
+            <div class="kpi-header">
+              <span class="kpi-tag">ENGENHARIA PURA</span>
+              <span class="kpi-indicator status-green"></span>
+            </div>
+            <div class="kpi-value-row">
+              <span class="kpi-number">ZERO</span><span class="kpi-unit">FLOREIOS</span>
+            </div>
+            <div class="kpi-title">ENGENHARIA REAL E DIRETA</div>
+            <p class="kpi-desc">Voltado a engenheiros, técnicos, supervisores e estudantes que exigem precisão operacional sem promessas vazias.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO SOBRE O AUTOR -->
+    <section class="author-section" id="sobre-autor">
+      <div class="section-container">
+        <div class="author-panel reveal-item">
+          <div class="author-grid">
+            <div class="author-visual-column">
+              <div class="author-portrait-frame">
+                <div class="author-backdrop-glow"></div>
+                <img src="assets/author-sergio.png" alt="Sergio Ramón Gay Lozada — Especialista Sênior em Perfuração e Workover" class="author-img">
+                <div class="author-badge-card">
+                  <span class="badge-role-lead">ESPECIALISTA SÊNIOR</span>
+                  <span class="badge-role-sub">Perfuração & Workover</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="author-bio-column">
+              <div class="section-kicker">// AUTORIDADE TÉCNICA E VIVÊNCIA REAL</div>
+              <h2 class="author-name-title">SERGIO RAMÓN GAY LOZADA</h2>
+              <div class="author-credentials">
+                Especialista Sênior Internacional em Operações de Perfuração & Workover
+              </div>
+
+              <!-- Citação Central de Destaque Obrigatória -->
+              <blockquote class="author-featured-quote">
+                <div class="quote-mark">“</div>
+                <p>A rotação é o coração da perfuração. É ela que transforma potência em movimento, movimento em torque e torque em progresso.</p>
+                <cite>— Sergio Ramón Gay Lozada, Imersão na Sonda Vol. I</cite>
+              </blockquote>
+
+              <div class="author-bio-text">
+                <p>
+                  Com mais de duas décadas dedicadas às operações de perfuração e intervenção de poços no setor de Petróleo e Gás, Sergio Ramón construiu sua carreira onde a engenharia é testada segundo a segundo: no chão da sonda e nas cabines de comando.
+                </p>
+                <p>
+                  Atuou na liderança e consultoria de frentes operacionais de alta criticidade em diversas bacias sedimentares, lidando com desafios de poços profundos, controle de torque severo, seleção criteriosa de brocas e gestão de equipes multidisciplinares sob condições extremas de pressão e tempo.
+                </p>
+              </div>
+
+              <div class="author-rig-companies">
+                <div class="companies-label">HISTÓRICO OPERACIONAL EM GRANDES PLAYERS GLOBAIS DE P&G:</div>
+                <div class="companies-badges-grid">
+                  <div class="company-badge">
+                    <span class="comp-name">PDVSA</span>
+                    <span class="comp-type">Operações Upstream</span>
+                  </div>
+                  <div class="company-badge">
+                    <span class="comp-name">WEATHERFORD</span>
+                    <span class="comp-type">Well Services</span>
+                  </div>
+                  <div class="company-badge">
+                    <span class="comp-name">SLB</span>
+                    <span class="comp-type">Schlumberger Tech</span>
+                  </div>
+                  <div class="company-badge">
+                    <span class="comp-name">NABORS</span>
+                    <span class="comp-type">Drilling Solutions</span>
+                  </div>
+                  <div class="company-badge">
+                    <span class="comp-name">SAXON</span>
+                    <span class="comp-type">Energy Services</span>
+                  </div>
+                  <div class="company-badge">
+                    <span class="comp-name">BOHAI</span>
+                    <span class="comp-type">Drilling Engineering</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO MAPA DE CONTEÚDO (OS 10 CAPÍTULOS TÉCNICOS) -->
+    <section class="syllabus-section" id="capitulos">
+      <div class="section-container">
+        <div class="section-header-block reveal-item">
+          <div class="section-kicker">// PROGRAMA TÉCNICO COMPLETO</div>
+          <h2 class="section-title">OS 10 MÓDULOS DO LIVRO</h2>
+          <p class="section-subtitle">
+            Estruturado em 3 blocos lógicos fundamentais para cobrir desde a geração e transmissão de torque na superfície até a resposta mecânica no fundo do poço e a tomada de decisão da liderança.
+          </p>
+          
+          <div class="view-mode-toggle-bar">
+            <span class="view-label">DUPLA FORMA DE NAVEGAÇÃO:</span>
+            <div class="view-buttons">
+              <button class="btn-toggle-view active" id="btnShowAccordion" type="button">
+                <span>📑 CATÁLOGO EM ACCORDION</span>
+              </button>
+              <button class="btn-toggle-view" id="btnShowCarousel" type="button">
+                <span>🎛️ DATASHEET EM CARROSSEL</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- MODO 1: GRID ACCORDION (1 aberto por vez, acessível) -->
+        <div class="accordion-view-container" id="accordionContainer">
+          
+          <!-- BLOCO 01 -->
+          <div class="module-group-block reveal-item">
+            <div class="group-header">
+              <div class="group-tag">BLOCO 01</div>
+              <h3 class="group-title">SUPERFÍCIE & TRANSMISSÃO DE TORQUE</h3>
+              <span class="group-count">MÓDULOS 01 A 04</span>
+            </div>
+
+            <div class="accordion-grid">
+              
+              <!-- Módulo 01 -->
+              <div class="accordion-item" data-chapter="1">
+                <button class="accordion-header" id="accHeader1" aria-expanded="false" aria-controls="accContent1">
+                  <div class="acc-meta">
+                    <span class="acc-num">01</span>
+                    <span class="acc-kicker">MECÂNICA DE SUPERFÍCIE</span>
+                  </div>
+                  <div class="acc-title-wrap">
+                    <h4 class="acc-title">MESA ROTATIVA</h4>
+                    <span class="acc-snippet">Sistema tradicional, Master Bushing, eixo Cardan e prevenção de NPT.</span>
+                  </div>
+                  <div class="acc-action-icon" aria-hidden="true">+</div>
+                </button>
+                <div class="accordion-content" id="accContent1" role="region" aria-labelledby="accHeader1" hidden>
+                  <div class="acc-inner">
+                    <div class="acc-desc">
+                      Análise profunda do sistema de rotação tradicional por mesa rotativa. Cinemática de transmissão através de eixo Cardan, acoplamentos, lubrificação de carcaça e alinhamento axial com o poço.
+                    </div>
+                    <div class="acc-specs-grid">
+                      <div class="spec-box">
+                        <span class="spec-label">FOCO OPERACIONAL</span>
+                        <span class="spec-val">Inspeção de Master Bushing, folgas de pinos e buchas bipartidas.</span>
+                      </div>
+                      <div class="spec-box">
+                        <span class="spec-label">CONTROLE DE RISCO</span>
+                        <span class="spec-val">Mitigação de desgaste prematuro de Kelly drive e vibrações parasitas.</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Módulo 02 -->
+              <div class="accordion-item" data-chapter="2">
+                <button class="accordion-header" id="accHeader2" aria-expanded="false" aria-controls="accContent2">
+                  <div class="acc-meta">
+                    <span class="acc-num">02</span>
+                    <span class="acc-kicker">TRANSMISSÃO PRIMÁRIA</span>
+                  </div>
+                  <div class="acc-title-wrap">
+                    <h4 class="acc-title">KELLY & BUCHAS DE ENCAIXE</h4>
+                    <span class="acc-snippet">Transmissão de torque mecânico, válvulas de segurança e aplicação em Workover.</span>
+                  </div>
+                  <div class="acc-action-icon" aria-hidden="true">+</div>
+                </button>
+                <div class="accordion-content" id="accContent2" role="region" aria-labelledby="accHeader2" hidden>
+                  <div class="acc-inner">
+                    <div class="acc-desc">
+                      Geometrias de Kelly (quadrado e hexagonal), Kelly Bushing de roletes, dinâmica de avanço e retrocesso, e o papel fundamental das válvulas de segurança Upper e Lower Kelly Cock na contenção de poço.
+                    </div>
+                    <div class="acc-specs-grid">
+                      <div class="spec-box">
+                        <span class="spec-label">FOCO OPERACIONAL</span>
+                        <span class="spec-val">Manobras de conexão simples, limites de torque e desgaste de roletes.</span>
+                      </div>
+                      <div class="spec-box">
+                        <span class="spec-label">WORKOVER APLICADO</span>
+                        <span class="spec-val">Vantagens operacionais e limites em operações de limpeza e fresagem.</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Módulo 03 -->
+              <div class="accordion-item" data-chapter="3">
+                <button class="accordion-header" id="accHeader3" aria-expanded="false" aria-controls="accContent3">
+                  <div class="acc-meta">
+                    <span class="acc-num">03</span>
+                    <span class="acc-kicker">ALTA EFICIÊNCIA</span>
+                  </div>
+                  <div class="acc-title-wrap">
+                    <h4 class="acc-title">TOP DRIVE</h4>
+                    <span class="acc-snippet">Perfuração por stands triplos, Pipe Handler, Torque Track e redução de paradas.</span>
+                  </div>
+                  <div class="acc-action-icon" aria-hidden="true">+</div>
+                </button>
+                <div class="accordion-content" id="accContent3" role="region" aria-labelledby="accHeader3" hidden>
+                  <div class="acc-inner">
+                    <div class="acc-desc">
+                      O salto tecnológico da perfuração moderna: acionamento de topo direto na coluna. Detalhamento do Pipe Handler, elevador hidráulico remoto, IBOP acionado por comando de cabine e trilho de reação de torque (Torque Track).
+                    </div>
+                    <div class="acc-specs-grid">
+                      <div class="spec-box">
+                        <span class="spec-label">FOCO OPERACIONAL</span>
+                        <span class="spec-val">Perfuração contínua por stands triplos (28m), back-reaming com circulação.</span>
+                      </div>
+                      <div class="spec-box">
+                        <span class="spec-label">REDUÇÃO DE NPT</span>
+                        <span class="spec-val">Corte drástico no tempo de conexão e redução de risco de aprisionamento de coluna.</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Módulo 04 -->
+              <div class="accordion-item" data-chapter="4">
+                <button class="accordion-header" id="accHeader4" aria-expanded="false" aria-controls="accContent4">
+                  <div class="acc-meta">
+                    <span class="acc-num">04</span>
+                    <span class="acc-kicker">SUSTENTAÇÃO & FLUIDOS</span>
+                  </div>
+                  <div class="acc-title-wrap">
+                    <h4 class="acc-title">SWIVEL (CABEÇA DE INJEÇÃO)</h4>
+                    <span class="acc-snippet">Sustentação de cargas de centenas de toneladas, Washpipe e procedimentos LOTO.</span>
+                  </div>
+                  <div class="acc-action-icon" aria-hidden="true">+</div>
+                </button>
+                <div class="accordion-content" id="accContent4" role="region" aria-labelledby="accHeader4" hidden>
+                  <div class="acc-inner">
+                    <div class="acc-desc">
+                      O componente híbrido crítico que conecta a parte estática (mangueira de lama e mastro) à parte rotativa sob cargas axiais brutais e pressões hidráulicas superiores a 5.000 PSI.
+                    </div>
+                    <div class="acc-specs-grid">
+                      <div class="spec-box">
+                        <span class="spec-label">FOCO OPERACIONAL</span>
+                        <span class="spec-val">Inspeção de gaxetas de vedação, conjunto Washpipe e lubrificação de rolamentos de carga.</span>
+                      </div>
+                      <div class="spec-box">
+                        <span class="spec-label">SEGURANÇA INDUSTRIAL</span>
+                        <span class="spec-val">Procedimentos LOTO e alívio seguro de pressão em linhas de circulação.</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- BLOCO 02 -->
+          <div class="module-group-block reveal-item">
+            <div class="group-header">
+              <div class="group-tag">BLOCO 02</div>
+              <h3 class="group-title">COLUNA DE PERFURAÇÃO & BHA (BOTTOM HOLE ASSEMBLY)</h3>
+              <span class="group-count">MÓDULOS 05 A 07</span>
+            </div>
+
+            <div class="accordion-grid">
+              
+              <!-- Módulo 05 -->
+              <div class="accordion-item" data-chapter="5">
+                <button class="accordion-header" id="accHeader5" aria-expanded="false" aria-controls="accContent5">
+                  <div class="acc-meta">
+                    <span class="acc-num">05</span>
+                    <span class="acc-kicker">MECÂNICA ESTRUTURAL</span>
+                  </div>
+                  <div class="acc-title-wrap">
+                    <h4 class="acc-title">COLUNA DE PERFURAÇÃO</h4>
+                    <span class="acc-snippet">Drill Pipe, Heavy Weight (HWDP), Drill Collars, estabilizadores e Hardbanding.</span>
+                  </div>
+                  <div class="acc-action-icon" aria-hidden="true">+</div>
+                </button>
+                <div class="accordion-content" id="accContent5" role="region" aria-labelledby="accHeader5" hidden>
+                  <div class="acc-inner">
+                    <div class="acc-desc">
+                      Dimensionamento de tensões, limites de flambagem e fadiga cíclica de conexões com rosca rotativa. O papel da zona de transição de peso com HWDP e aplicação do peso sobre a broca (WOB) através dos comandos de perfuração.
+                    </div>
+                    <div class="acc-specs-grid">
+                      <div class="spec-box">
+                        <span class="spec-label">FOCO OPERACIONAL</span>
+                        <span class="spec-val">Torque correto de aperto (Make-up Torque API), inspeções visuais e magnéticas.</span>
+                      </div>
+                      <div class="spec-box">
+                        <span class="spec-label">INTEGRIDADE DO POÇO</span>
+                        <span class="spec-val">Hardbanding adequado para evitar desgaste do revestimento e da coluna.</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Módulo 06 -->
+              <div class="accordion-item" data-chapter="6">
+                <button class="accordion-header" id="accHeader6" aria-expanded="false" aria-controls="accContent6">
+                  <div class="acc-meta">
+                    <span class="acc-num">06</span>
+                    <span class="acc-kicker">MECÂNICA DE CORTE</span>
+                  </div>
+                  <div class="acc-title-wrap">
+                    <h4 class="acc-title">BROCAS DE PERFURAÇÃO</h4>
+                    <span class="acc-snippet">Brocas PDC vs. Tricônicas, dinâmica de cisalhamento e avaliação IADC Dull Grading.</span>
+                  </div>
+                  <div class="acc-action-icon" aria-hidden="true">+</div>
+                </button>
+                <div class="accordion-content" id="accContent6" role="region" aria-labelledby="accHeader6" hidden>
+                  <div class="acc-inner">
+                    <div class="acc-desc">
+                      Princípios de desgaste e arrancamento litológico: compactos de diamante policristalino (PDC) por cisalhamento vs. cones dentados por compressão/impacto. Checklist rigoroso de inspeção na boca do poço.
+                    </div>
+                    <div class="acc-specs-grid">
+                      <div class="spec-box">
+                        <span class="spec-label">IADC DULL GRADING</span>
+                        <span class="spec-val">Classificação detalhada dos 8 fatores de desgaste na retirada da broca.</span>
+                      </div>
+                      <div class="spec-box">
+                        <span class="spec-label">OTIMIZAÇÃO DE ROP</span>
+                        <span class="spec-val">Correlação entre torque reativo, vibrações torcionais (stick-slip) e vida útil.</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Módulo 07 -->
+              <div class="accordion-item" data-chapter="7">
+                <button class="accordion-header" id="accHeader7" aria-expanded="false" aria-controls="accContent7">
+                  <div class="acc-meta">
+                    <span class="acc-num">07</span>
+                    <span class="acc-kicker">POTÊNCIA HIDRÁULICA DE FUNDO</span>
+                  </div>
+                  <div class="acc-title-wrap">
+                    <h4 class="acc-title">MOTOR DE FUNDO (PDM)</h4>
+                    <span class="acc-snippet">Conversão de fluxo hidráulico em torque no BHA, perfuração direcional e horizontal.</span>
+                  </div>
+                  <div class="acc-action-icon" aria-hidden="true">+</div>
+                </button>
+                <div class="accordion-content" id="accContent7" role="region" aria-labelledby="accHeader7" hidden>
+                  <div class="acc-inner">
+                    <div class="acc-desc">
+                      Motores de deslocamento positivo (PDM) baseados no princípio Moineau de rotor e estator elastomérico. Configuração de estágios, relação de lobos e sub com cotovelo ajustável (Bent Housing) para controle de trajetória.
+                    </div>
+                    <div class="acc-specs-grid">
+                      <div class="spec-box">
+                        <span class="spec-label">MODO SLIDING VS ROTARY</span>
+                        <span class="spec-val">Equilíbrio de torque diferencial e prevenção de estolamento do motor.</span>
+                      </div>
+                      <div class="spec-box">
+                        <span class="spec-label">APLICAÇÃO CRÍTICA</span>
+                        <span class="spec-val">Geonavegação e preservação da vida do estator sob altas temperaturas.</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- BLOCO 03 -->
+          <div class="module-group-block reveal-item">
+            <div class="group-header">
+              <div class="group-tag">BLOCO 03</div>
+              <h3 class="group-title">OPERAÇÃO, INTEGRAÇÃO & LIDERANÇA DE SONDA</h3>
+              <span class="group-count">MÓDULOS 08 A 10</span>
+            </div>
+
+            <div class="accordion-grid">
+              
+              <!-- Módulo 08 -->
+              <div class="accordion-item" data-chapter="8">
+                <button class="accordion-header" id="accHeader8" aria-expanded="false" aria-controls="accContent8">
+                  <div class="acc-meta">
+                    <span class="acc-num">08</span>
+                    <span class="acc-kicker">CINEMÁTICA INTEGRADA</span>
+                  </div>
+                  <div class="acc-title-wrap">
+                    <h4 class="acc-title">SISTEMA INTEGRADO</h4>
+                    <span class="acc-snippet">Como os componentes de superfície e fundo atuam em harmonia e resposta de torque.</span>
+                  </div>
+                  <div class="acc-action-icon" aria-hidden="true">+</div>
+                </button>
+                <div class="accordion-content" id="accContent8" role="region" aria-labelledby="accHeader8" hidden>
+                  <div class="acc-inner">
+                    <div class="acc-desc">
+                      A visão holística da coluna de perfuração como uma mola torcional elástica de quilômetros de extensão. Dinâmica de propagação de ondas de torque, efeitos de arrasto e mitigação de vórtice de redemoinho (whirl).
+                    </div>
+                    <div class="acc-specs-grid">
+                      <div class="spec-box">
+                        <span class="spec-label">EQUILÍBRIO DE PARÂMETROS</span>
+                        <span class="spec-val">Casamento entre vazão de bombeio, RPM de superfície e peso sobre a broca.</span>
+                      </div>
+                      <div class="spec-box">
+                        <span class="spec-label">MONITORAMENTO</span>
+                        <span class="spec-val">Interpretação de anomalias nos gráficos de torque da cabine do sondador.</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Módulo 09 -->
+              <div class="accordion-item" data-chapter="9">
+                <button class="accordion-header" id="accHeader9" aria-expanded="false" aria-controls="accContent9">
+                  <div class="acc-meta">
+                    <span class="acc-num">09</span>
+                    <span class="acc-kicker">CASOS REAIS DE CAMPO</span>
+                  </div>
+                  <div class="acc-title-wrap">
+                    <h4 class="acc-title">CAMPO REAL: ESTUDOS DE CASO</h4>
+                    <span class="acc-snippet">Decisões sob pressão máxima, falhas catastróficas evitadas e lições aprendidas.</span>
+                  </div>
+                  <div class="acc-action-icon" aria-hidden="true">+</div>
+                </button>
+                <div class="accordion-content" id="accContent9" role="region" aria-labelledby="accHeader9" hidden>
+                  <div class="acc-inner">
+                    <div class="acc-desc">
+                      Estudos de caso reais vividos pelo autor: desprendimento de cunha, quebra de eixo de swivel durante circulação, prisão de coluna diferencial e intervenções para recuperação sem quebra de poço.
+                    </div>
+                    <div class="acc-specs-grid">
+                      <div class="spec-box">
+                        <span class="spec-label">RESOLUÇÃO DE PROBLEMAS</span>
+                        <span class="spec-val">Protocolos de ação imediata antes de acionar equipe de pescaria.</span>
+                      </div>
+                      <div class="spec-box">
+                        <span class="spec-label">LIÇÕES APRENDIDAS</span>
+                        <span class="spec-val">Análise de causa raiz e blindagem operacional contra reincidência de erros.</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Módulo 10 -->
+              <div class="accordion-item" data-chapter="10">
+                <button class="accordion-header" id="accHeader10" aria-expanded="false" aria-controls="accContent10">
+                  <div class="acc-meta">
+                    <span class="acc-num">10</span>
+                    <span class="acc-kicker">GESTÃO & COMANDO</span>
+                  </div>
+                  <div class="acc-title-wrap">
+                    <h4 class="acc-title">O PAPEL DO LÍDER DE SONDA</h4>
+                    <span class="acc-snippet">Comunicação clara no piso da sonda, cultura de segurança e performance de elite.</span>
+                  </div>
+                  <div class="acc-action-icon" aria-hidden="true">+</div>
+                </button>
+                <div class="accordion-content" id="accContent10" role="region" aria-labelledby="accHeader10" hidden>
+                  <div class="acc-inner">
+                    <div class="acc-desc">
+                      A engenharia não funciona sem liderança assertiva. Como o supervisor, encarregado e sondador conduzem DDS, briefing pré-manobra, disciplina de parada (Stop Work Authority) e formação técnica contínua da equipe.
+                    </div>
+                    <div class="acc-specs-grid">
+                      <div class="spec-box">
+                        <span class="spec-label">GESTÃO OPERACIONAL</span>
+                        <span class="spec-val">Prevenção de acidentes com ferramentas pesadas e chave flutuante.</span>
+                      </div>
+                      <div class="spec-box">
+                        <span class="spec-label">PERFORMANCE SUSTENTÁVEL</span>
+                        <span class="spec-val">Condução de turnos eficientes com zero acidentes e zero tempo perdido.</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- MODO 2: CARROSSEL SINCRONIZADO (Datasheet interativo) -->
+        <div class="carousel-view-container hidden" id="carouselContainer" role="region" aria-label="Carrossel de Módulos Técnicos">
+          <div class="carousel-viewport" id="carouselViewport">
+            <div class="carousel-track" id="carouselTrack">
+              <!-- Slides são injetados dinamicamente via script.js com dados estruturados -->
+            </div>
+          </div>
+
+          <div class="carousel-nav-bar">
+            <button class="carousel-btn btn-prev" id="carouselPrev" aria-label="Módulo Anterior">
+              <span aria-hidden="true">←</span> MÓDULO ANTERIOR
+            </button>
+            <div class="carousel-dots-wrapper" id="carouselDots" role="tablist" aria-label="Seleção rápida de capítulo">
+              <!-- Dots numerados gerados via JS -->
+            </div>
+            <button class="carousel-btn btn-next" id="carouselNext" aria-label="Próximo Módulo">
+              PRÓXIMO MÓDULO <span aria-hidden="true">→</span>
+            </button>
+          </div>
+          <div class="carousel-keyboard-hint">
+            <span>Dica de Navegação: Use as setas do teclado <strong>←</strong> e <strong>→</strong> para navegar entre os módulos.</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEÇÃO BENEFÍCIOS TÉCNICOS (DIFERENCIAIS DE ENGENHARIA) -->
+    <section class="benefits-section" id="beneficios">
+      <div class="section-container">
+        <div class="section-header-block text-center reveal-item">
+          <div class="section-kicker">// VALOR PRÁTICO APLICADO</div>
+          <h2 class="section-title">POR QUE ESTE MANUAL É DIFERENTE?</h2>
+          <p class="section-subtitle">
+            Desenvolvido para suprir a lacuna entre as fórmulas acadêmicas dos livros universitários e a realidade crua, dinâmica e perigosa da operação de uma sonda de perfuração.
+          </p>
+        </div>
+
+        <div class="benefits-grid">
+          <div class="benefit-card reveal-item">
+            <div class="benefit-header">
+              <span class="benefit-num">01</span>
+              <div class="benefit-icon-box">
+                <!-- Ícone Diagrama / Fluxo -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFB800" stroke-width="2">
+                  <rect x="3" y="3" width="7" height="7"/>
+                  <rect x="14" y="3" width="7" height="7"/>
+                  <rect x="14" y="14" width="7" height="7"/>
+                  <path d="M10 6.5h4M17.5 10v4M6.5 10v7h7.5"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="benefit-title">DIAGRAMAS CINEMÁTICOS & ESQUEMAS DE COMPONENTES</h3>
+            <p class="benefit-text">
+              Ilustrações técnicas esquemáticas detalhando o fluxo exato de torque, pontos de lubrificação, vedações críticas de alta pressão (washpipe) e encaixes mecânicos com cotas de desgaste aceitáveis.
+            </p>
+            <div class="benefit-highlight-tag">VISUALIZAÇÃO SEM AMBIGUIDADE</div>
+          </div>
+
+          <div class="benefit-card reveal-item">
+            <div class="benefit-header">
+              <span class="benefit-num">02</span>
+              <div class="benefit-icon-box">
+                <!-- Ícone Decisão sob pressão / Alvo -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFB800" stroke-width="2">
+                  <circle cx="12" cy="12" r="9"/>
+                  <line x1="12" y1="3" x2="12" y2="7"/>
+                  <line x1="12" y1="17" x2="12" y2="21"/>
+                  <line x1="3" y1="12" x2="7" y2="12"/>
+                  <line x1="17" y1="12" x2="21" y2="12"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="benefit-title">LIÇÕES APRENDIDAS & ANÁLISE DE FALHAS REAIS</h3>
+            <p class="benefit-text">
+              Estudos de caso reais de ocorrências operacionais: como identificar sinais prévios de estolamento, perda de circulação durante rotação e desbalanceamento dinâmico antes que causem pescaria ou perda de poço.
+            </p>
+            <div class="benefit-highlight-tag">EXPERIÊNCIA ADQUIRIDA EM CAMPO</div>
+          </div>
+
+          <div class="benefit-card reveal-item">
+            <div class="benefit-header">
+              <span class="benefit-num">03</span>
+              <div class="benefit-icon-box">
+                <!-- Ícone Checklist / Blindagem -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFB800" stroke-width="2">
+                  <path d="M9 11l3 3L22 4"/>
+                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="benefit-title">CHECKLISTS PRÉ-OPERACIONAIS & PREVENÇÃO DE NPT</h3>
+            <p class="benefit-text">
+              Roteiros objetivos de verificação prontos para uso em campo: conferência de torque make-up de roscas, matriz IADC Dull Grading e protocolo LOTO antes de manutenções no sistema de rotação.
+            </p>
+            <div class="benefit-highlight-tag">BLINDAGEM CONTRA PARADAS NÃO PROGRAMADAS</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO O GRANDE DIFERENCIAL: LABORATÓRIO DE EFICIÊNCIA DA SONDA (SIMULADOR INTERATIVO) -->
+    <section class="simulator-section" id="simulador">
+      <div class="section-container">
+        
+        <div class="simulator-header-block reveal-item">
+          <div class="sim-tag-row">
+            <span class="sim-badge-live"><span class="blink-dot"></span> TELEMETRIA EM TEMPO REAL</span>
+            <span class="sim-badge-type">FERRAMENTA EXCLUSIVA DE ENGENHARIA</span>
+          </div>
+          <h2 class="section-title">LABORATÓRIO DE EFICIÊNCIA DA SONDA</h2>
+          <p class="section-subtitle">
+            Simule o impacto operacional e o custo financeiro real de decisões no sistema de rotação. Alterne os sliders abaixo e veja como a eficiência de conexão (Top Drive vs. Kelly) e paradas operacionais alteram dramaticamente os números do seu turno.
+          </p>
+        </div>
+
+        <div class="simulator-dashboard reveal-item">
+          
+          <!-- Lado Esquerdo: Controles e Parâmetros da Sonda -->
+          <div class="sim-controls-pane">
+            <div class="pane-header">
+              <span class="pane-title">PARÂMETROS OPERACIONAIS DO TURNO</span>
+              <span class="pane-id">SYS-CFG // 12H SHIFT</span>
+            </div>
+
+            <!-- Toggle Ambiente Onshore vs Offshore -->
+            <div class="sim-toggle-group">
+              <span class="toggle-label">AMBIENTE OPERACIONAL:</span>
+              <div class="rig-mode-switch" role="radiogroup" aria-label="Tipo de Ambiente de Sonda">
+                <button type="button" class="mode-btn active" id="btnModeOnshore" role="radio" aria-checked="true">
+                  <span class="mode-icon">🏜️</span>
+                  <span class="mode-title">ONSHORE</span>
+                  <span class="mode-rate">Taxa: ~R$ 6.250 / h</span>
+                </button>
+                <button type="button" class="mode-btn" id="btnModeOffshore" role="radio" aria-checked="false">
+                  <span class="mode-icon">🌊</span>
+                  <span class="mode-title">OFFSHORE</span>
+                  <span class="mode-rate">Taxa: ~R$ 75.000 / h</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Slider 1: Horas de Perfuração Efetiva -->
+            <div class="sim-slider-block">
+              <div class="slider-header-row">
+                <label for="sliderDrillHours" class="slider-label">Horas de Perfuração Efetiva no Turno (Rotação)</label>
+                <span class="slider-live-value" id="valDrillHours">8.0 h</span>
+              </div>
+              <input type="range" id="sliderDrillHours" min="2" max="12" step="0.5" value="8" class="custom-slider">
+              <div class="slider-range-labels">
+                <span>2h (Turno Travado)</span>
+                <span>8h (Padrão)</span>
+                <span>12h (Turno Integral)</span>
+              </div>
+            </div>
+
+            <!-- Slider 2: Profundidade do Poço -->
+            <div class="sim-slider-block">
+              <div class="slider-header-row">
+                <label for="sliderWellDepth" class="slider-label">Profundidade Atual do Poço</label>
+                <span class="slider-live-value" id="valWellDepth">3.200 m</span>
+              </div>
+              <input type="range" id="sliderWellDepth" min="500" max="6000" step="100" value="3200" class="custom-slider">
+              <div class="slider-range-labels">
+                <span>500 m (Raso)</span>
+                <span>3.000 m (Médio)</span>
+                <span>6.000 m (Profundo)</span>
+              </div>
+            </div>
+
+            <!-- Slider 3: Tempo Médio por Conexão / Stand -->
+            <div class="sim-slider-block">
+              <div class="slider-header-row">
+                <label for="sliderConnTime" class="slider-label">Tempo Médio de Conexão no Piso da Sonda</label>
+                <span class="slider-live-value" id="valConnTime">3.5 min</span>
+              </div>
+              <input type="range" id="sliderConnTime" min="1.5" max="8.0" step="0.5" value="3.5" class="custom-slider">
+              <div class="slider-range-labels">
+                <span>1.5 min (Equipe Ágil)</span>
+                <span>3.5 min (Média)</span>
+                <span>8.0 min (Complexa / Lentidão)</span>
+              </div>
+            </div>
+
+            <!-- Slider 4: Paradas Operacionais no Turno -->
+            <div class="sim-slider-block">
+              <div class="slider-header-row">
+                <label for="sliderDowntime" class="slider-label">Paradas Operacionais Não Programadas (Turno)</label>
+                <span class="slider-live-value" id="valDowntime">1.5 h</span>
+              </div>
+              <input type="range" id="sliderDowntime" min="0.0" max="6.0" step="0.25" value="1.5" class="custom-slider">
+              <div class="slider-range-labels">
+                <span>0.0h (Zero NPT)</span>
+                <span>1.5h (Atenção)</span>
+                <span>6.0h (Crítico)</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Lado Direito: Telemetria e Indicadores Recalculados em Tempo Real -->
+          <div class="sim-telemetry-pane">
+            <div class="pane-header">
+              <span class="pane-title">DIAGNÓSTICO DE PERFORMANCE EM TEMPO REAL</span>
+              <span class="pane-status" id="simStatusPill">STATUS: OPERACIONAL</span>
+            </div>
+
+            <!-- Comparativo de Tempo em Conexões: Kelly vs Top Drive -->
+            <div class="telemetry-card">
+              <div class="card-kicker">COMPARATIVO DE EFICIÊNCIA DE CONEXÃO</div>
+              <h4 class="card-title">SISTEMA KELLY vs. TOP DRIVE (STANDS TRIPLOS)</h4>
+              
+              <div class="connection-stats-grid">
+                <div class="conn-stat-item kelly-side">
+                  <span class="stat-tag">SISTEMA KELLY (JUNTA SIMPLES ~9.5M)</span>
+                  <div class="stat-number" id="kellyConnCount">25 conexões</div>
+                  <span class="stat-subtext" id="kellyConnDuration">Total gasto: 1h 28min</span>
+                </div>
+                <div class="conn-stat-item topdrive-side">
+                  <span class="stat-tag">TOP DRIVE (STAND TRIPLO ~28.5M)</span>
+                  <div class="stat-number" id="tdConnCount">8 conexões</div>
+                  <span class="stat-subtext" id="tdConnDuration">Total gasto: 0h 29min</span>
+                </div>
+              </div>
+
+              <!-- Ganho Líquido por Turno -->
+              <div class="conn-savings-banner">
+                <div class="savings-icon">⚡</div>
+                <div class="savings-text">
+                  <span class="savings-label">GANHO LÍQUIDO ESTIMADO NO TURNO COM TOP DRIVE:</span>
+                  <strong class="savings-val" id="timeSavedPerShift">+ 59 minutos economizados</strong>
+                  <span class="savings-detail">66% menos conexões manuais e menor exposição física dos plataformistas na mesa.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tempo Total de Manobra Completa (Round-Trip) -->
+            <div class="telemetry-card">
+              <div class="telemetry-split-row">
+                <div>
+                  <div class="card-kicker">TEMPO DE MANOBRA COMPLETA (TRIP IN / OUT)</div>
+                  <div class="telemetry-big-number" id="trippingTimeEst">6.5 horas</div>
+                  <span class="telemetry-subtext" id="standsCountLabel">Baseado em 112 stands a 3.5 min/stand</span>
+                </div>
+                <div class="depth-indicator-box">
+                  <span class="indicator-label">COLUNA TOTAL</span>
+                  <span class="indicator-m" id="depthGaugeNumber">3.200 m</span>
+                </div>
+              </div>
+              <div class="progress-bar-shell">
+                <div class="progress-bar-core" id="depthProgressBar" style="width: 53%;"></div>
+              </div>
+            </div>
+
+            <!-- NPT e Custo Financeiro das Paradas -->
+            <div class="telemetry-card card-npt-alert" id="nptAlertCard">
+              <div class="npt-header-row">
+                <div>
+                  <div class="card-kicker">TEMPO NÃO PRODUTIVO ESTIMADO (NPT NO TURNO)</div>
+                  <div class="npt-rate-row">
+                    <span class="npt-percentage" id="nptPercentVal">12.5%</span>
+                    <span class="npt-badge-state" id="nptBadgeState">ATENÇÃO OPERACIONAL</span>
+                  </div>
+                </div>
+
+                <div class="npt-cost-box">
+                  <span class="cost-label">CUSTO FINANCEIRO ESTIMADO:</span>
+                  <span class="cost-currency" id="downtimeCostVal">R$ 112.500</span>
+                  <span class="cost-period" id="downtimeCostNote">perdidos neste turno</span>
+                </div>
+              </div>
+
+              <!-- Gauge Visual do NPT -->
+              <div class="gauge-container">
+                <div class="gauge-labels">
+                  <span>0% (Excelente)</span>
+                  <span>10% (Alerta)</span>
+                  <span>20%+ (Crítico)</span>
+                </div>
+                <div class="gauge-track">
+                  <div class="gauge-fill" id="nptGaugeFill" style="width: 25%;"></div>
+                </div>
+              </div>
+
+              <div class="npt-insight-text" id="nptInsightText">
+                "Paradas causadas por falha de gaxeta de swivel, torque incorreto de rosca ou colapso de broca drenam milhares de reais a cada fração de hora."
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Nota de Rodapé Exigida pelo Requisito Técnico -->
+        <div class="simulator-disclaimer reveal-item">
+          <span class="disclaimer-icon">ℹ️</span>
+          <p>
+            <strong>Nota Técnica:</strong> Os dados e taxas exibidos no simulador são estimativas ilustrativas calculadas para fins didáticos e comparativos de engenharia. Os custos operacionais reais dependem do contrato de afretamento específico da unidade, spread de serviços acoplados, profundidade da lâmina d'água e condições geológicas da formação perfurada.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEÇÃO OFERTA / ESPECIFICAÇÃO DE COMPRA DO E-BOOK -->
+    <section class="offer-section" id="oferta">
+      <div class="section-container">
+        <div class="offer-card reveal-item">
+          
+          <div class="offer-top-strip">
+            <span class="strip-badge">DISPONÍVEL PARA DOWNLOAD IMEDIATO</span>
+            <span class="strip-doc">REGISTRO DE PUBLICAÇÃO TÉCNICA // VOLUME I</span>
+          </div>
+
+          <div class="offer-main-grid">
+            <div class="offer-details-col">
+              <div class="section-kicker">// ADQUIRA SEU EXEMPLAR</div>
+              <h2 class="offer-title">IMERSÃO NA SONDA — VOL. I</h2>
+              <h3 class="offer-subtitle">SISTEMA DE ROTAÇÃO EM PERFURAÇÃO & WORKOVER</h3>
+              
+              <p class="offer-lead-text">
+                Tenha em mãos o guia definitivo que consolida mais de 20 anos de experiência operacional em um documento estruturado, visual e rigorosamente técnico.
+              </p>
+
+              <div class="included-items-list">
+                <div class="included-item">
+                  <div class="item-check">✓</div>
+                  <div class="item-body">
+                    <strong>E-book Completo em Alta Definição (PDF)</strong>
+                    <span>10 módulos técnicos diagramados com tabelas, esquemas cinemáticos e linguagem de campo.</span>
+                  </div>
+                </div>
+
+                <div class="included-item">
+                  <div class="item-check">✓</div>
+                  <div class="item-body">
+                    <strong>Caderno de Checklists de Inspeção Pré-Operacional</strong>
+                    <span>Roteiros objetivos de verificação para Mesa Rotativa, Kelly, Top Drive e Swivel.</span>
+                  </div>
+                </div>
+
+                <div class="included-item">
+                  <div class="item-check">✓</div>
+                  <div class="item-body">
+                    <strong>Tabelas de Consulta Rápida & IADC Dull Grading</strong>
+                    <span>Guia de campo para classificação sistemática de desgaste e arrancamento de brocas PDC e tricônicas.</span>
+                  </div>
+                </div>
+
+                <div class="included-item">
+                  <div class="item-check">✓</div>
+                  <div class="item-body">
+                    <strong>Acesso Vitalício & Atualizações da 1ª Edição</strong>
+                    <span>Consulte em qualquer lugar pelo celular, tablet ou notebook, inclusive offline na sonda.</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Garantia de 7 Dias -->
+              <div class="guarantee-box">
+                <div class="guarantee-badge">
+                  <div class="badge-ribbon">7 DIAS</div>
+                </div>
+                <div class="guarantee-info">
+                  <strong>GARANTIA INCONDICIONAL DE ENGENHARIA DE 7 DIAS</strong>
+                  <p>
+                    Se o conteúdo prático deste material não agregar valor real à sua compreensão técnica ou à sua rotina operacional no setor de Petróleo e Gás, você tem 7 dias completos para solicitar reembolso integral sem burocracia.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Coluna de Ação e Checkout -->
+            <div class="offer-action-col">
+              <div class="pricing-card">
+                <div class="pricing-header">
+                  <span class="pricing-tag">CONDIÇÃO ESPECIAL DE LANÇAMENTO</span>
+                  <div class="pricing-badge-instant">ACESSO IMEDIATO APÓS PAGAMENTO</div>
+                </div>
+
+                <div class="pricing-body">
+                  <div class="price-format">
+                    <span class="price-currency">R$</span>
+                    <span class="price-value">39</span>
+                    <span class="price-cents">,00</span>
+                  </div>
+                  <span class="price-installment">ou em até 12x no cartão de crédito</span>
+
+                  <div class="pricing-features-pills">
+                    <span>⚡ Liberação Imediata</span>
+                    <span>📱 Formato PDF Otimizado</span>
+                    <span>🔒 Pagamento Seguro</span>
+                  </div>
+
+                  <!-- Botão de Compra com o link especificado -->
+                  <a href="https://bit.ly/AcesseImersaoNaSonda" target="_blank" rel="noopener noreferrer" class="btn btn-purchase">
+                    <span>CLIQUE AQUI PARA ACESSAR O LIVRO (PDF)</span>
+                    <svg class="purchase-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <line x1="5" y1="12" x2="19" y2="12"/>
+                      <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                  </a>
+
+                  <div class="pricing-security-row">
+                    <div class="security-badge">
+                      <span class="sec-icon">🔒</span>
+                      <span>Ambiente Criptografado 256-Bit</span>
+                    </div>
+                    <div class="security-badge">
+                      <span class="sec-icon">🛡️</span>
+                      <span>Garantia de 7 Dias</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pricing-footer">
+                  <span>Não perca horas tentando aprender sozinho o que levou 20 anos de campo para ser consolidado.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER TÉCNICO -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      
+      <div class="footer-top-row">
+        <div class="footer-brand">
+          <div class="brand-identity">
+            <svg class="derrick-icon" viewBox="0 0 32 32" fill="none">
+              <path d="M16 2L8 28H24L16 2Z" stroke="#FFB800" stroke-width="2"/>
+              <path d="M12 15H20M10 21H22M14 9H18" stroke="#FFB800" stroke-width="1.5"/>
+            </svg>
+            <div class="brand-text">
+              <span class="brand-title">IMERSÃO NA SONDA</span>
+              <span class="brand-tag">VOL. I // SISTEMA DE ROTAÇÃO</span>
+            </div>
+          </div>
+          <p class="footer-tagline">
+            "A rotação é o coração da perfuração. É ela que transforma potência em movimento, movimento em torque e torque em progresso."
+          </p>
+        </div>
+
+        <div class="footer-links-col">
+          <span class="footer-col-title">NAVEGAÇÃO</span>
+          <ul class="footer-links-list">
+            <li><a href="#hero">Início da Página</a></li>
+            <li><a href="#sobre-autor">Sobre o Autor</a></li>
+            <li><a href="#capitulos">Os 10 Capítulos</a></li>
+            <li><a href="#simulador">Simulador da Sonda</a></li>
+            <li><a href="#beneficios">Diferenciais de Engenharia</a></li>
+            <li><a href="#oferta">Adquirir Exemplar</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-meta-col">
+          <span class="footer-col-title">ESPECIFICAÇÕES TÉCNICAS</span>
+          <div class="footer-meta-list">
+            <div><strong>Autor:</strong> Sergio Ramón Gay Lozada</div>
+            <div><strong>Segmento:</strong> Petróleo e Gás (Upstream / Perfuração & Workover)</div>
+            <div><strong>Formato:</strong> Livro Digital / Documento PDF Indexado</div>
+            <div><strong>Edição:</strong> 1ª Edição — Volume I</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-row">
+        <div class="footer-copyright">
+          © 2026 Imersão na Sonda — Sergio Ramón Gay Lozada. Todos os direitos reservados.
+        </div>
+        
+        <a href="#hero" class="back-to-top-btn" id="btnBackToTop" aria-label="Voltar ao início da página">
+          <span>VOLTAR AO TOPO</span>
+          <span class="arrow-up" aria-hidden="true">↑</span>
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
