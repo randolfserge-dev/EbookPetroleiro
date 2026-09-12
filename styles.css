@@ -70,6 +70,8 @@ html {
   color: var(--text-primary);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  width: 100%;
 }
 
 body {
@@ -77,7 +79,8 @@ body {
   background-color: var(--bg-main);
   color: var(--text-primary);
   line-height: 1.6;
-  overflow-x: hidden;
+  /* overflow-x: clip previne barra de rolagem horizontal sem quebrar o sticky */
+  overflow-x: clip;
   position: relative;
 }
 
@@ -424,26 +427,64 @@ img {
 }
 
 /* ==========================================================================
-   SEÇÃO HERO COM EFEITO 3D TILT
+   SEÇÃO HERO (CINEMATIC SCROLL)
    ========================================================================== */
+.hero-scroll-wrapper {
+  position: relative;
+  /* Altura que permite rolar para avançar a animação (aprox 300vh garante fluidez) */
+  height: 300vh; 
+  z-index: 1;
+}
+
 .hero-section {
-  min-height: 100vh;
-  padding-top: calc(var(--header-height) + 40px);
-  padding-bottom: 70px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding-top: var(--header-height);
   display: flex;
   align-items: center;
-  position: relative;
   overflow: hidden;
   border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Vídeo Cinemático Scroll-driven */
+.hero-video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  background-color: var(--bg-main);
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% center; /* Tenta preservar pessoa e livro à direita na versão desktop */
+  transform: translateX(25%);
+  filter: brightness(1.08) saturate(1.15);
+}
+
+/* Camada visual para legibilidade de texto */
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  /* Escuro denso na esquerda (texto), gradiente transparente na direita */
+  background: linear-gradient(90deg, var(--bg-main) 0%, var(--bg-main) 34%, rgba(9, 13, 19, 0.78) 42%, rgba(9, 13, 19, 0.32) 58%, rgba(9, 13, 19, 0.02) 78%, transparent 100%);
+  z-index: 1;
 }
 
 .hero-background-grid {
   position: absolute;
   inset: 0;
   background-image: 
-    radial-gradient(circle at 75% 35%, rgba(255, 184, 0, 0.07) 0%, transparent 55%),
-    radial-gradient(circle at 20% 70%, rgba(16, 22, 30, 0.8) 0%, transparent 60%);
+    radial-gradient(circle at 75% 35%, rgba(255, 184, 0, 0.04) 0%, transparent 55%),
+    radial-gradient(circle at 20% 70%, rgba(16, 22, 30, 0.5) 0%, transparent 60%);
   pointer-events: none;
+  z-index: 1;
 }
 
 .hero-radial-glow {
@@ -452,9 +493,10 @@ img {
   right: 15%;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(255, 184, 0, 0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 184, 0, 0.1) 0%, transparent 70%);
   filter: blur(80px);
   pointer-events: none;
+  z-index: 1;
 }
 
 .hero-container {
@@ -466,7 +508,7 @@ img {
   align-items: center;
   gap: 60px;
   position: relative;
-  z-index: 1;
+  z-index: 2; /* Garante que os componentes e textos fiquem sobrepostos ao overlay */
 }
 
 .hero-content {
@@ -553,7 +595,8 @@ img {
   align-items: center;
   gap: 14px;
   padding: 12px 16px;
-  background-color: var(--bg-surface);
+  background-color: rgba(16, 22, 30, 0.6);
+  backdrop-filter: blur(4px);
   border: 1px solid var(--border-subtle);
   border-left: 3px solid var(--accent-amber);
   border-radius: var(--radius-sm);
@@ -608,6 +651,7 @@ img {
   border: 1px dashed var(--border-medium);
   border-radius: var(--radius-sm);
   transition: all var(--transition-fast);
+  background-color: rgba(9, 13, 19, 0.4);
 }
 
 .fast-track-link strong {
@@ -617,7 +661,7 @@ img {
 .fast-track-link:hover {
   color: var(--text-primary);
   border-color: var(--accent-amber);
-  background-color: rgba(255, 184, 0, 0.05);
+  background-color: rgba(255, 184, 0, 0.1);
 }
 
 .fast-track-pulse {
@@ -628,302 +672,21 @@ img {
   animation: pulse-ring 1.5s infinite;
 }
 
-/* ==========================================================================
-   ESTRUTURA 3D DA CAPA DO LIVRO (TILT INTERATIVO)
-   ========================================================================== */
-.hero-visual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.book-3d-wrapper {
+/* Elementos Flutuantes Reposicionados e Livres sobre o Vídeo */
+.hero-badges-wrapper {
   position: relative;
-  perspective: 1200px;
   width: 100%;
-  max-width: 420px;
-  padding: 40px 20px;
-}
-
-.book-ambient-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 380px;
-  height: 520px;
-  background: radial-gradient(circle, rgba(255, 184, 0, 0.28) 0%, rgba(255, 184, 0, 0.08) 45%, transparent 75%);
-  filter: blur(40px);
+  height: 100%;
+  min-height: 500px;
   pointer-events: none;
-  z-index: 0;
-  transition: opacity 0.3s ease;
-}
-
-.book-3d-scene {
-  position: relative;
-  width: 298px;
-  height: 422px;
-  margin: 0 auto;
-  transform-style: preserve-3d;
-  z-index: 1;
-}
-
-.book-object {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transform: rotateY(-18deg) rotateX(10deg);
-  transition: transform 0.15s ease-out;
-  cursor: grab;
-}
-
-.book-object:active {
-  cursor: grabbing;
-}
-
-.book-face {
-  position: absolute;
-  inset: 0;
-  backface-visibility: hidden;
-}
-
-/* Capa Frontal */
-.book-front {
-  background: #090d13;
-  border: 1px solid rgba(255, 184, 0, 0.4);
-  border-radius: 2px 8px 8px 2px;
-  box-shadow: 
-    inset 4px 0 10px rgba(255, 255, 255, 0.15),
-    inset -2px 0 8px rgba(0, 0, 0, 0.8),
-    20px 25px 45px rgba(0, 0, 0, 0.85);
-  display: block;
-  overflow: hidden;
-  transform: translateZ(18px);
-}
-
-.book-cover-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  border-radius: 2px 8px 8px 2px;
-}
-
-.book-front-content {
-  position: relative;
-  z-index: 2;
-  padding: 24px 20px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border: 1px solid rgba(255, 184, 0, 0.15);
-  margin: 8px;
-}
-
-.book-header-badge {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-condensed);
-  font-size: 0.85rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  color: var(--accent-amber);
-}
-
-.book-derrick-icon {
-  width: 18px;
-  height: 18px;
-}
-
-.book-quote-pill {
-  font-size: 0.72rem;
-  color: #c5ced8;
-  font-style: italic;
-  line-height: 1.4;
-  border-left: 2px solid var(--accent-amber);
-  padding-left: 8px;
-  margin-top: 6px;
-}
-
-.book-cover-artwork {
-  position: relative;
-  height: 140px;
-  margin: 12px 0;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.artwork-derrick {
-  position: absolute;
-  width: 110px;
-  height: 120px;
-  background-image: radial-gradient(circle at center, rgba(255,184,0,0.4) 0%, transparent 70%);
-  border-bottom: 2px solid var(--accent-amber);
-  clip-path: polygon(50% 0%, 20% 100%, 80% 100%);
-  background-color: rgba(255, 184, 0, 0.15);
-}
-
-.artwork-glow {
-  width: 140px;
-  height: 140px;
-  background: radial-gradient(circle, rgba(255, 184, 0, 0.3) 0%, transparent 70%);
-  filter: blur(20px);
-}
-
-.book-main-title {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.title-primary {
-  font-family: var(--font-condensed);
-  font-size: 2.2rem;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  color: #fff;
-  text-shadow: 0 0 15px rgba(255, 184, 0, 0.6);
-  line-height: 1;
-}
-
-.title-secondary {
-  font-family: var(--font-condensed);
-  font-size: 1.45rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  color: var(--accent-amber);
-  line-height: 1;
-  margin-bottom: 8px;
-}
-
-.vol-tag {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  color: var(--text-secondary);
-  background-color: rgba(255, 255, 255, 0.08);
-  padding: 2px 8px;
-  border-radius: var(--radius-sm);
-}
-
-.vol-name {
-  font-family: var(--font-condensed);
-  font-size: 0.92rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: #e5e9f0;
-  margin-top: 4px;
-}
-
-.book-author-line {
-  border-top: 1px solid rgba(255, 184, 0, 0.2);
-  padding-top: 8px;
-  text-align: center;
-}
-
-.author-name {
-  font-family: var(--font-condensed);
-  font-size: 0.85rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  color: var(--accent-amber);
-  display: block;
-}
-
-.author-role {
-  font-size: 0.55rem;
-  color: var(--text-secondary);
-  letter-spacing: 0.04em;
-  display: block;
-  line-height: 1.2;
-  margin-top: 2px;
-}
-
-/* Brilho Especular Dinâmico */
-.book-glare {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
-  opacity: 0.25;
-  pointer-events: none;
-  mix-blend-mode: overlay;
-  z-index: 10;
-  transition: opacity 0.2s ease;
-}
-
-/* Lombada do Livro */
-.book-spine {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 36px;
-  height: 100%;
-  background: linear-gradient(90deg, #090d13 0%, #151d27 50%, #0c1218 100%);
-  border-left: 1px solid rgba(255, 184, 0, 0.4);
-  transform: rotateY(-90deg) translateZ(18px);
-  transform-origin: left center;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.spine-text {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  transform: rotate(180deg);
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  font-family: var(--font-condensed);
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  color: var(--text-secondary);
-}
-
-.spine-title {
-  color: var(--accent-amber);
-}
-
-/* Miolo de Páginas */
-.book-pages {
-  position: absolute;
-  top: 4px;
-  right: 0;
-  width: 34px;
-  height: calc(100% - 8px);
-  background: repeating-linear-gradient(
-    90deg,
-    #cfd5dc 0px,
-    #b0bac6 1px,
-    #e2e8f0 2px,
-    #a2acb8 3px
-  );
-  transform: rotateY(90deg) translateZ(280px);
-  transform-origin: right center;
-  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.6);
-  border-radius: 0 4px 4px 0;
-}
-
-/* Verso */
-.book-back {
-  background: #090d13;
-  transform: translateZ(-18px) rotateY(180deg);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* Badges Técnicos Flutuantes */
 .floating-telemetry {
   position: absolute;
-  background-color: rgba(16, 22, 30, 0.92);
+  background-color: rgba(16, 22, 30, 0.85);
   backdrop-filter: blur(8px);
   border: 1px solid var(--border-medium);
   border-left: 3px solid var(--accent-amber);
@@ -937,22 +700,22 @@ img {
   animation: float-tag 4s ease-in-out infinite;
 }
 
-.tag-top-right {
-  top: 15px;
-  right: -25px;
+.hero-badges-wrapper .tag-top-right {
+  top: 10%;
+  right: 0;
   animation-delay: 0s;
 }
 
-.tag-bottom-left {
-  bottom: 40px;
-  left: -35px;
+.hero-badges-wrapper .tag-bottom-left {
+  bottom: 15%;
+  left: 5%;
   border-left-color: var(--status-warn);
   animation-delay: 1.5s;
 }
 
-.tag-bottom-right {
-  bottom: 0px;
-  right: -20px;
+.hero-badges-wrapper .tag-bottom-right {
+  bottom: 0%;
+  right: 5%;
   border-left-color: var(--status-safe);
   animation-delay: 2.5s;
 }
@@ -984,18 +747,6 @@ img {
   color: var(--text-secondary);
 }
 
-.book-interact-tip {
-  text-align: center;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  margin-top: 24px;
-}
-
-.tip-icon {
-  color: var(--accent-amber);
-}
-
 /* ==========================================================================
    SEÇÃO DE MÉTRICAS DE AUTORIDADE (KPIs INDUSTRIAIS)
    ========================================================================== */
@@ -1004,6 +755,7 @@ img {
   background-color: #0b1017;
   border-bottom: 1px solid var(--border-subtle);
   position: relative;
+  z-index: 2; /* Garante que role sobre a área sticky da hero adequadamente */
 }
 
 .kpi-grid {
@@ -2908,11 +2660,18 @@ img {
    RESPONSIVIDADE & MEDIA QUERIES (MOBILE, TABLET, DESKTOP)
    ========================================================================== */
 
-/* Prevenção rigorosa de scroll horizontal */
-html, body {
-  overflow-x: hidden;
-  max-width: 100vw;
-  width: 100%;
+/* Suporte à redução de movimento nativa */
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-wrapper {
+    height: auto !important;
+  }
+  .hero-section {
+    position: relative;
+    height: 100vh;
+  }
+  .floating-telemetry {
+    animation: none;
+  }
 }
 
 /* Tablet e Telas Médias (<= 1080px) */
@@ -2933,6 +2692,10 @@ html, body {
 
   .hero-cta-group {
     justify-content: center;
+  }
+
+  .hero-video-overlay {
+    background: linear-gradient(180deg, rgba(9, 13, 19, 0.85) 0%, rgba(9, 13, 19, 0.7) 50%, rgba(9, 13, 19, 0.95) 100%);
   }
 
   .kpi-grid {
@@ -3080,12 +2843,6 @@ html, body {
   }
 
   /* SEÇÃO HERO MOBILE */
-  .hero-section {
-    padding-top: calc(var(--header-height) + 16px);
-    padding-bottom: 40px;
-    min-height: auto;
-  }
-
   .hero-container {
     gap: 30px;
     padding: 0 16px;
@@ -3152,22 +2909,19 @@ html, body {
     padding: 8px 12px;
   }
 
-  /* Capa 3D no Mobile: dimensionamento proporcional e sem overflow */
-  .book-3d-wrapper {
-    padding: 10px 0 20px 0;
-    max-width: 100%;
-    transform: scale(0.85);
-    transform-origin: center top;
-    margin-bottom: -35px;
+  /* Ajustes do Vídeo Hero no Mobile */
+  .hero-video {
+    object-position: center;
+    transform: none;
+    filter: none;
   }
 
-  .floating-telemetry {
-    display: none !important; /* Desativa tags flutuantes para evitar qualquer overflow lateral */
+  .hero-video-overlay {
+    background: linear-gradient(180deg, rgba(9, 13, 19, 0.95) 0%, rgba(9, 13, 19, 0.7) 40%, rgba(9, 13, 19, 0.9) 100%);
   }
 
-  .book-interact-tip {
-    margin-top: 14px;
-    font-size: 0.7rem;
+  .hero-badges-wrapper {
+    display: none; /* Oculta badges flutuantes em telas muito pequenas para evitar overflow */
   }
 
   /* KPIs MOBILE */
@@ -3859,11 +3613,6 @@ html, body {
 
   .hero-subtitle-block {
     font-size: 1.1rem;
-  }
-
-  .book-3d-wrapper {
-    transform: scale(0.72);
-    margin-bottom: -50px;
   }
 
   .kpi-grid {

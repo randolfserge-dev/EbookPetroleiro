@@ -79,113 +79,59 @@ document.addEventListener('DOMContentLoaded', () => {
 
   revealElements.forEach(el => revealObserver.observe(el));
 
-  /* ==========================================================================
-     4. EFEITO 3D TILT NA CAPA DO LIVRO (REQUEST ANIMATION FRAME)
-     ========================================================================== */
-  const tiltWrapper = document.getElementById('bookTiltWrapper');
-  const bookObject = document.getElementById('bookObject');
-  const bookGlare = document.getElementById('bookGlare');
-  const bookGlow = document.getElementById('bookGlow');
+    /* ==========================================================================
+      4. HERO VIDEO SCROLL-SCRUBBING (CINEMATIC SCROLL) - OTIMIZADO
+      ========================================================================== */
+  const heroScrollWrapper = document.getElementById('heroScrollWrapper');
+  const heroVideo = document.getElementById('heroVideo');
 
-  if (tiltWrapper && bookObject) {
-    let mouseX = 0;
-    let mouseY = 0;
-    let currentX = 0;
-    let currentY = 0;
-    let isHovering = false;
-    let animationFrameId = null;
+  if (heroScrollWrapper && heroVideo) {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const frameCount = 240;
+    const frameImages = [];
+    const frameContext = heroVideo.getContext('2d');
+    let loadedFrameCount = 0;
+    let targetFrame = 0;
+    let drawnFrame = -1;
+    let frameDrawScheduled = false;
 
-    // Valores padrão de repouso
-    const defaultRotY = -18;
-    const defaultRotX = 10;
+    const drawFrame = () => {
+      frameDrawScheduled = false;
+      if (!frameImages[targetFrame] || drawnFrame === targetFrame) return;
 
-    const updateTilt = () => {
-      if (isHovering) {
-        // Interpolação suave (lerp)
-        currentX += (mouseX - currentX) * 0.1;
-        currentY += (mouseY - currentY) * 0.1;
-
-        // Limites de rotação (-30deg a +15deg no eixo Y, -15deg a +20deg no eixo X)
-        const targetRotY = defaultRotY + (currentX * 24);
-        const targetRotX = defaultRotX - (currentY * 20);
-
-        bookObject.style.transform = `rotateY(${targetRotY}deg) rotateX(${targetRotX}deg)`;
-
-        // Movimento do brilho especular acompanhando o cursor
-        if (bookGlare) {
-          const glareX = ((currentX + 1) / 2) * 100;
-          const glareY = ((currentY + 1) / 2) * 100;
-          bookGlare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(255, 255, 255, 0.45) 0%, transparent 65%)`;
-          bookGlare.style.opacity = '0.4';
-        }
-
-        if (bookGlow) {
-          bookGlow.style.transform = `translate(calc(-50% + ${currentX * 25}px), calc(-50% + ${currentY * 25}px))`;
-        }
-
-        animationFrameId = requestAnimationFrame(updateTilt);
-      } else {
-        // Retorno suave para a posição de repouso
-        currentX += (0 - currentX) * 0.08;
-        currentY += (0 - currentY) * 0.08;
-        const targetRotY = defaultRotY + (currentX * 24);
-        const targetRotX = defaultRotX - (currentY * 20);
-
-        bookObject.style.transform = `rotateY(${targetRotY}deg) rotateX(${targetRotX}deg)`;
-
-        if (Math.abs(currentX) > 0.001 || Math.abs(currentY) > 0.001) {
-          animationFrameId = requestAnimationFrame(updateTilt);
-        } else {
-          bookObject.style.transform = `rotateY(${defaultRotY}deg) rotateX(${defaultRotX}deg)`;
-          if (bookGlare) bookGlare.style.opacity = '0.2';
-          if (bookGlow) bookGlow.style.transform = 'translate(-50%, -50%)';
-        }
-      }
+      frameContext.drawImage(frameImages[targetFrame], 0, 0, heroVideo.width, heroVideo.height);
+      drawnFrame = targetFrame;
     };
 
-    tiltWrapper.addEventListener('mousemove', (e) => {
-      const rect = tiltWrapper.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      // Coordenadas normalizadas de -1 a +1
-      mouseX = (x / rect.width) * 2 - 1;
-      mouseY = (y / rect.height) * 2 - 1;
-
-      if (!isHovering) {
-        isHovering = true;
-        cancelAnimationFrame(animationFrameId);
-        animationFrameId = requestAnimationFrame(updateTilt);
-      }
-    });
-
-    tiltWrapper.addEventListener('mouseleave', () => {
-      isHovering = false;
-    });
-
-    // Suporte a toque tátil no celular/tablet
-    const handleTouch = (e) => {
-      if (e.touches && e.touches.length === 1) {
-        const rect = tiltWrapper.getBoundingClientRect();
-        const x = e.touches[0].clientX - rect.left;
-        const y = e.touches[0].clientY - rect.top;
-
-        mouseX = Math.max(-1, Math.min(1, (x / rect.width) * 2 - 1));
-        mouseY = Math.max(-1, Math.min(1, (y / rect.height) * 2 - 1));
-
-        if (!isHovering) {
-          isHovering = true;
-          cancelAnimationFrame(animationFrameId);
-          animationFrameId = requestAnimationFrame(updateTilt);
-        }
-      }
+    const scheduleFrameDraw = () => {
+      if (frameDrawScheduled) return;
+      frameDrawScheduled = true;
+      requestAnimationFrame(drawFrame);
     };
 
-    tiltWrapper.addEventListener('touchstart', handleTouch, { passive: true });
-    tiltWrapper.addEventListener('touchmove', handleTouch, { passive: true });
-    tiltWrapper.addEventListener('touchend', () => {
-      isHovering = false;
-    }, { passive: true });
+    const calculateScrollProgress = () => {
+      const rect = heroScrollWrapper.getBoundingClientRect();
+      const scrollableDistance = heroScrollWrapper.offsetHeight - window.innerHeight;
+      const progress = Math.max(0, Math.min(1, -rect.top / scrollableDistance));
+      targetFrame = Math.round(progress * (frameCount - 1));
+      scheduleFrameDraw();
+    };
+
+    for (let frameIndex = 0; frameIndex < frameCount; frameIndex += 1) {
+      const frameImage = new Image();
+      frameImage.decoding = 'async';
+      frameImage.src = `assets/hero-frames-hq/frame-${String(frameIndex + 1).padStart(3, '0')}.webp`;
+      frameImage.addEventListener('load', () => {
+        loadedFrameCount += 1;
+        if (frameIndex === targetFrame || loadedFrameCount === frameCount) calculateScrollProgress();
+      });
+      frameImages.push(frameImage);
+    }
+
+    if (!prefersReducedMotion) {
+      window.addEventListener('scroll', calculateScrollProgress, { passive: true });
+      window.addEventListener('resize', calculateScrollProgress, { passive: true });
+    }
   }
 
   /* ==========================================================================

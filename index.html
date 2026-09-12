@@ -79,112 +79,74 @@
 
   <main id="mainContent">
 
-    <!-- SEÇÃO HERO -->
-    <section class="hero-section" id="hero">
-      <div class="hero-background-grid" aria-hidden="true"></div>
-      <div class="hero-radial-glow" aria-hidden="true"></div>
-
-      <div class="hero-container">
-        <div class="hero-content">
-          <div class="hero-meta-kicker reveal-item">
-            <span class="tech-badge"><span class="badge-dot"></span> MANUAL DE ENGENHARIA & CAMPO</span>
-            <span class="tech-id">DOC ID: INS-VOL1-ROT</span>
-            <span class="tech-std">NORMAS: IADC / API SPEC 7</span>
-          </div>
-
-          <h1 class="hero-title reveal-item">
-            IMERSÃO NA SONDA
-            <span class="hero-subtitle-block">VOLUME I — SISTEMA DE ROTAÇÃO</span>
-          </h1>
-
-          <p class="hero-lead reveal-item">
-            A realidade operacional, os riscos de poço e as decisões críticas sob pressão que <strong>ninguém te fala</strong> no setor de Petróleo e Gás.
-          </p>
-
-          <p class="hero-subtext reveal-item">
-            Um tratado prático e direto ao ponto sobre transmissão de torque, integridade de coluna, cinemática de superfície e mitigação de NPT — escrito por quem acumula mais de 20 anos de chão de sonda internacional.
-          </p>
-
-          <div class="hero-author-stamp reveal-item">
-            <div class="stamp-icon">✓</div>
-            <div class="stamp-info">
-              <strong>Sergio Ramón Gay Lozada</strong>
-              <span>Especialista Sênior Internacional em Perfuração & Workover</span>
-            </div>
-          </div>
-
-          <div class="hero-cta-group reveal-item">
-            <a href="#oferta" class="btn btn-primary btn-lg">
-              <span class="btn-icon">⚡</span>
-              <span>ADQUIRIR AGORA (ACESSO IMEDIATO)</span>
-            </a>
-            <a href="#capitulos" class="btn btn-secondary btn-lg">
-              <span class="btn-icon">📋</span>
-              <span>EXPLORAR OS 10 CAPÍTULOS</span>
-            </a>
-          </div>
-
-          <div class="hero-fast-track reveal-item">
-            <a href="#simulador" class="fast-track-link">
-              <span class="fast-track-pulse"></span>
-              <span>TESTAR FERRAMENTA: <strong>Laboratório de Eficiência da Sonda</strong> ↓</span>
-            </a>
-          </div>
+    <!-- WRAPPER PARA O SCROLL-SCRUBBING DA HERO -->
+    <div class="hero-scroll-wrapper" id="heroScrollWrapper">
+      <!-- SEÇÃO HERO -->
+      <section class="hero-section" id="hero">
+        
+        <!-- NOVO VÍDEO CINEMATOGRÁFICO DE FUNDO -->
+        <div class="hero-video-container">
+          <!-- Fallback via poster="assets/cover.png" caso o vídeo demore ou falhe -->
+          <canvas class="hero-video" id="heroVideo" width="1920" height="1080" aria-hidden="true"></canvas>
+          <!-- Overlay em gradiente para garantir a legibilidade do texto -->
+          <div class="hero-video-overlay"></div>
         </div>
 
-        <!-- Capa 3D Interativa com Efeito Tilt ao Movimento do Mouse -->
-        <div class="hero-visual reveal-item">
-          <div class="book-3d-wrapper" id="bookTiltWrapper">
-            <div class="book-ambient-glow" id="bookGlow"></div>
-            
-            <div class="book-3d-scene">
-              <div class="book-object" id="bookObject">
-                <!-- Capa Frontal Oficial em Alta Definição -->
-                <div class="book-face book-front">
-                  <img src="assets/cover.png" alt="Capa Oficial do Livro Imersão na Sonda — Volume I: Sistema de Rotação por Sergio Ramón Gay Lozada" class="book-cover-image" onerror="this.src='assets/vover.png'">
-                  <!-- Brilho especular dinâmico que reage ao mouse -->
-                  <div class="book-glare" id="bookGlare"></div>
-                </div>
+        <!-- Efeitos visuais do Design System mantidos -->
+        <div class="hero-background-grid" aria-hidden="true"></div>
+        <div class="hero-radial-glow" aria-hidden="true"></div>
 
-                <!-- Lombada 3D do Livro -->
-                <div class="book-face book-spine">
-                  <div class="spine-text">
-                    <span>SERGIO RAMÓN GAY LOZADA</span>
-                    <span class="spine-title">IMERSÃO NA SONDA — VOL. I: SISTEMA DE ROTAÇÃO</span>
-                  </div>
-                </div>
+        <div class="hero-container">
+          <div class="hero-content">
+            <div class="hero-meta-kicker reveal-item">
+              <span class="tech-badge"><span class="badge-dot"></span> MANUAL DE ENGENHARIA & CAMPO</span>
+              <span class="tech-id">DOC ID: INS-VOL1-ROT</span>
+              <span class="tech-std">NORMAS: IADC / API SPEC 7</span>
+            </div>
 
-                <!-- Páginas / Corte Lateral do Livro -->
-                <div class="book-face book-pages"></div>
-                <!-- Verso do Livro -->
-                <div class="book-face book-back"></div>
+            <h1 class="hero-title reveal-item">
+              IMERSÃO NA SONDA
+              <span class="hero-subtitle-block">VOLUME I — SISTEMA DE ROTAÇÃO</span>
+            </h1>
+
+            <p class="hero-lead reveal-item">
+              A realidade operacional, os riscos de poço e as decisões críticas sob pressão que <strong>ninguém te fala</strong> no setor de Petróleo e Gás.
+            </p>
+
+            <p class="hero-subtext reveal-item">
+              Um tratado prático e direto ao ponto sobre transmissão de torque, integridade de coluna, cinemática de superfície e mitigação de NPT — escrito por quem acumula mais de 20 anos de chão de sonda internacional.
+            </p>
+
+            <div class="hero-author-stamp reveal-item">
+              <div class="stamp-icon">✓</div>
+              <div class="stamp-info">
+                <strong>Sergio Ramón Gay Lozada</strong>
+                <span>Especialista Sênior Internacional em Perfuração & Workover</span>
               </div>
             </div>
 
-            <!-- Badges Técnicos Flutuantes ao Redor da Obra -->
-            <div class="floating-telemetry tag-top-right">
-              <span class="tag-status">ONLINE</span>
-              <span class="tag-label">TOP DRIVE & KELLY</span>
-              <span class="tag-val">TORQUE TRACK // 45.000 FT-LBS</span>
-            </div>
-            <div class="floating-telemetry tag-bottom-left">
-              <span class="tag-status">CRITICAL</span>
-              <span class="tag-label">MITIGAÇÃO DE NPT</span>
-              <span class="tag-val">PREVENÇÃO DE PRISÃO DE COLUNA</span>
-            </div>
-            <div class="floating-telemetry tag-bottom-right">
-              <span class="tag-status">API COMPLIANT</span>
-              <span class="tag-label">IADC DULL GRADING</span>
-              <span class="tag-val">AVALIAÇÃO DE BROCAS PDC</span>
+            <div class="hero-cta-group reveal-item">
+              <a href="#oferta" class="btn btn-primary btn-lg">
+                <span class="btn-icon">⚡</span>
+                <span>ADQUIRIR AGORA (ACESSO IMEDIATO)</span>
+              </a>
+              <a href="#capitulos" class="btn btn-secondary btn-lg">
+                <span class="btn-icon">📋</span>
+                <span>EXPLORAR OS 10 CAPÍTULOS</span>
+              </a>
             </div>
 
-            <p class="book-interact-tip">
-              <span class="tip-icon">⤹</span> Mova o cursor sobre a obra para inspecionar em 3D
-            </p>
+            <div class="hero-fast-track reveal-item">
+              <a href="#simulador" class="fast-track-link">
+                <span class="fast-track-pulse"></span>
+                <span>TESTAR FERRAMENTA: <strong>Laboratório de Eficiência da Sonda</strong> ↓</span>
+              </a>
+            </div>
           </div>
+
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
 
     <!-- SEÇÃO MÉTRICAS DE AUTORIDADE (KPIs INDUSTRIAIS) -->
     <section class="kpi-section" aria-label="Métricas de Engenharia e Autoridade">
