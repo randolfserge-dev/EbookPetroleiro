@@ -1075,6 +1075,77 @@ img {
 }
 
 /* ==========================================================================
+   SEÇÃO VÍDEO DO AUTOR
+   ========================================================================== */
+.author-video-section {
+  padding: 100px 0;
+  position: relative;
+  background: linear-gradient(180deg, rgba(16, 22, 30, 0.5) 0%, rgba(9, 13, 19, 0.9) 100%);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.author-video-header {
+  max-width: 760px;
+  margin: 0 auto 38px;
+  text-align: center;
+}
+
+.author-video-header .section-subtitle {
+  margin: 14px auto 0;
+}
+
+.author-video-frame {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-amber);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 36px rgba(255, 184, 0, 0.08);
+}
+
+.author-video-player {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #05070a;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+}
+
+.author-video-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 8px 4px;
+}
+
+.author-video-status,
+.author-video-caption {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+}
+
+.author-video-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent-amber);
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--status-safe);
+  box-shadow: 0 0 8px var(--status-safe);
+}
+
+/* ==========================================================================
    SEÇÃO MAPA DE CONTEÚDO (OS 10 CAPÍTULOS TÉCNICOS)
    ========================================================================== */
 .syllabus-section {
@@ -2418,11 +2489,61 @@ img {
   border-radius: var(--radius-sm);
 }
 
+.pricing-countdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.countdown-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+}
+
+.countdown-time {
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent-amber);
+  text-shadow: 0 0 12px rgba(255, 184, 0, 0.35);
+  font-variant-numeric: tabular-nums;
+}
+
 .pricing-body {
   padding: 28px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.price-old {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 4px;
+  color: var(--text-secondary);
+  font-family: var(--font-condensed);
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.price-old::after {
+  content: "";
+  position: absolute;
+  top: 48%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: var(--status-crit);
+  pointer-events: none;
 }
 
 .price-format {
@@ -2981,6 +3102,31 @@ img {
   /* AUTOR MOBILE */
   .author-section {
     padding: 60px 0;
+  }
+
+  .author-video-section {
+    padding: 60px 0;
+  }
+
+  .author-video-header {
+    margin-bottom: 26px;
+  }
+
+  .author-video-frame {
+    padding: 6px;
+    border-radius: var(--radius-md);
+  }
+
+  .author-video-meta {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px 6px 4px;
+  }
+
+  .author-video-status,
+  .author-video-caption {
+    font-size: 0.6rem;
   }
 
   .author-panel {
@@ -3557,6 +3703,25 @@ img {
 
   .price-currency {
     font-size: 1.3rem;
+  }
+
+  .pricing-countdown {
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 14px;
+    padding-top: 12px;
+  }
+
+  .countdown-label {
+    font-size: 0.58rem;
+  }
+
+  .countdown-time {
+    font-size: 1.15rem;
+  }
+
+  .price-old {
+    font-size: 1.1rem;
   }
 
   .price-value {

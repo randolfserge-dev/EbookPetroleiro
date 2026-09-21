@@ -627,7 +627,44 @@ document.addEventListener('DOMContentLoaded', () => {
   recalculateSimulator();
 
   /* ==========================================================================
-     9. VOLTAR AO TOPO SUAVE
+     9. CONTADOR DA OFERTA ESPECIAL
+     ========================================================================== */
+  const offerCountdown = document.getElementById('offerCountdown');
+
+  if (offerCountdown) {
+    const countdownStorageKey = 'imersaoNaSondaOfferDeadline';
+    const durationInMilliseconds = 4 * 60 * 60 * 1000;
+    let offerDeadline = Number(localStorage.getItem(countdownStorageKey));
+
+    if (!offerDeadline || offerDeadline <= Date.now()) {
+      offerDeadline = Date.now() + durationInMilliseconds;
+      localStorage.setItem(countdownStorageKey, String(offerDeadline));
+    }
+
+    const updateOfferCountdown = () => {
+      const remainingMilliseconds = Math.max(0, offerDeadline - Date.now());
+      const remainingSeconds = Math.floor(remainingMilliseconds / 1000);
+      const hours = Math.floor(remainingSeconds / 3600);
+      const minutes = Math.floor((remainingSeconds % 3600) / 60);
+      const seconds = remainingSeconds % 60;
+
+      offerCountdown.textContent = [hours, minutes, seconds]
+        .map(value => String(value).padStart(2, '0'))
+        .join(':');
+
+      if (remainingMilliseconds === 0) {
+        const countdownLabel = offerCountdown.previousElementSibling;
+        if (countdownLabel) countdownLabel.textContent = 'OFERTA ENCERRADA';
+        window.clearInterval(countdownInterval);
+      }
+    };
+
+    updateOfferCountdown();
+    const countdownInterval = window.setInterval(updateOfferCountdown, 1000);
+  }
+
+  /* ==========================================================================
+     10. VOLTAR AO TOPO SUAVE
      ========================================================================== */
   const btnBackToTop = document.getElementById('btnBackToTop');
   if (btnBackToTop) {
